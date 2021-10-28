@@ -11,7 +11,7 @@ class DealsController < ApplicationController
     @deal.product = @product
     @deal.user = current_user
     if @deal.save
-      redirect_to products_path
+      redirect_to products_path, notice: "Produto adicionado com sucesso."
     else
       render :new
     end
