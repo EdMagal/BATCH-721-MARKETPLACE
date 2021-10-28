@@ -1,0 +1,7 @@
+<h1>Ofertas</h1>
+
+<% @products.each do |product| %>
+  <p> <%= link_to product.title, product_path(product)%> R$: <%= product.price %></p>
+<% end %>
+
+<p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
