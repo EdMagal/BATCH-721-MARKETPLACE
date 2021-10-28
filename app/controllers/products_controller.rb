@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_product, only: [:show, :destroy]
 
   # GET /products
@@ -23,10 +24,10 @@ class ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.new(product_params)
-
-    if @product.valid?
-      @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+    @product.user = current_user
+    if @product.save
+     
+      redirect_to products_path, notice: 'Product was successfully created.'
     else
       render :new
     end
