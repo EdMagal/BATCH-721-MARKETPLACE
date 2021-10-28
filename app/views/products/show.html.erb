@@ -1,0 +1,8 @@
+
+<h1><%= @product.title %></h1>
+  <p>Descrição:<%= @product.description%></p>
+  <p>Preço: R$<%= @product.price%></p>  
+  <p>Estoque:<%= @product.stock%></p>
+  <h2>Categoria:<%= @product.category %></h2>
+
+  <p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
