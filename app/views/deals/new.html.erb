@@ -1,0 +1,7 @@
+<h1><%= @deal.product %></h1>
+<p><%= @deal.product.price %></p>
+
+<%= simple_form_for [@deal] do |f| %>
+  <%= f.input :quantity %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
