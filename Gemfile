@@ -65,3 +65,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 gem 'cloudinary'
 gem 'devise'
+gem 'dotenv-rails', groups: [:development, :test]
