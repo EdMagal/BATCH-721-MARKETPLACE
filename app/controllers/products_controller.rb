@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+  
+  def cheap
+    @products = Product.where("price < 20")
+  end
 
   # GET /products/:id
   def show
@@ -43,6 +47,6 @@ class ProductsController < ApplicationController
 
   # Before show, edit, update and destroy run this code!
   def set_product
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 end
