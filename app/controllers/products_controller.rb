@@ -6,8 +6,9 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
   
+  # GET /products/:cheap (collection)
   def cheap
-    @products = Product.where("price < 20")
+    @products = Product.where(:price < 20)
   end
 
   # GET /products/:id
