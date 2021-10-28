@@ -16,10 +16,12 @@ puts "Products database has been successfully cleared."
 # Seeds the database with 10 Instances of the User model using the Faker gem
 puts "Seeding Users database..."
 10.times do
-  User.create(
+  User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.street_address
+    address: Faker::Address.street_address,
+    email: Faker::Internet.email,
+    password: "123123"
   )
 end
 puts "10 users have been created."
@@ -27,7 +29,7 @@ puts "10 users have been created."
 # Seeds the database with 30 Instances of the Product model using the Faker gem
 puts "Seeding products database..."
 30.times do
-  Product.create(
+  Product.create!(
     title: Faker::Commerce.product_name,
     price: rand(1..100),
     description: Faker::Lorem.paragraph,

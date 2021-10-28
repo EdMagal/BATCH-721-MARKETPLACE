@@ -1,5 +1,6 @@
 
 <h1> Produtos </h1>
+<%= link_to 'Incluir um produto', new_product_path, class: "btn-flat" %>
 <ul><% @products.each do |product| %>
   <li><%= link_to product.title, product_path(product)%>
   R$:<%= product.price%></li>
