@@ -6,3 +6,5 @@
   <h2>Categoria:<%= @product.category %></h2>
 
   <p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
+
+  <p type="button" class="btn btn-link"><%= link_to 'comprar', new_product_deal_path(@product)%></p>
