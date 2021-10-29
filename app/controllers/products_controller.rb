@@ -5,7 +5,12 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    # @products = Product.all
+      if params[:query].present?
+        @products = Product.search_by_title_and_description("%#{params[:query]}%")
+      else
+        @products = Product.all
+      end
   end
   
   # GET /products/:cheap (collection)
