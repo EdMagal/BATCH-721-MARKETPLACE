@@ -30,5 +30,8 @@
 
 <div class="d-flex justify-content-around">
   <p type="button" class="btn btn-outline-warning"><%= link_to 'Voltar', products_path %></p>
+  <% if policy(Deal).create? %>
   <p type="button" class="btn btn-outline-success"><%= link_to 'Comprar', new_product_deal_path(@product)%></p>
+  <% end %>
 </div>
+
