@@ -4,6 +4,13 @@
   <p>Preço: R$<%= @product.price%></p>  
   <p>Estoque:<%= @product.stock%></p>
   <h2>Categoria:<%= @product.category %></h2>
+  <% if @product.photos.attached? %>
+  <% @product.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <% else %>
+   You should add a picture to your product!
+  <% end %>
 
   <p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
 

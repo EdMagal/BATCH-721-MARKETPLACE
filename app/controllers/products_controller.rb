@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_product, only: [:show, :destroy]
+  
 
   # GET /products
   def index
@@ -44,7 +45,7 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:title, :description, :price, :stock, :category )
+    params.require(:product).permit(:title, :description, :price, :stock, :category, photos: [] )
   end
 
   # Before show, edit, update and destroy run this code!
