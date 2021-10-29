@@ -13,5 +13,6 @@
   <% end %>
 
   <p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
-
+  <% if policy(Deal).create? %>
   <p type="button" class="btn btn-link"><%= link_to 'comprar', new_product_deal_path(@product)%></p>
+  <% end %>
