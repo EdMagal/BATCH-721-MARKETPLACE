@@ -6,7 +6,7 @@
           <% last_word = product.title.split.last %>
           <div class="card h-100 shadow-sm"> <img src=<%= Faker::LoremFlickr.image(size: "300x300", search_terms: [last_word]) %> class="card-img-top" alt="...">
             <div class="card-body">
-              <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary"><%= product.title %></span> R$ <span class="float-end price-hp">R$: <%= product.price%></span> </div>
+              <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary"><%= product.title %></span> <span class="float-end price-hp">R$: <%= product.price%></span> </div>
               <h5 class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
               <div class="text-center my-4"><%= link_to "Ver oferta", product_path(product), class: 'btn btn-warning' %></div>
             </div>
