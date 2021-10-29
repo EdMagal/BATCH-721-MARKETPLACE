@@ -7,9 +7,9 @@ class ProductsController < ApplicationController
   def index
     # @products = Product.all
       if params[:query].present?
-        @products = Product.search_by_title_and_description("%#{params[:query]}%")
+        @products = policy_scope(Product).search_by_title_and_description("%#{params[:query]}%")
       else
-        @products = Product.all
+        @products = policy_scope(Product)
       end
   end
   
@@ -25,12 +25,14 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    authorize @product
   end
 
   # POST /products
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+    authorize @product
     if @product.save
      
       redirect_to products_path, notice: 'Product was successfully created.'
@@ -41,6 +43,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/:id/delete
   def destroy
+    authorize @product
     @product.destroy
     # TODO: Find out the correct redirect path to call after deletion
     redirect_to products_path
@@ -55,6 +58,6 @@ class ProductsController < ApplicationController
 
   # Before show, edit, update and destroy run this code!
   def set_product
-    @product = Product.find(params[:id])
+    @product = policy_scope(Product).find(params[:id])
   end
 end
