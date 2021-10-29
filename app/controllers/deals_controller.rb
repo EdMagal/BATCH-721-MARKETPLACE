@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   before_action :find_product, only: [:new, :create]
 
   # GET /deals
-  def index
+  def list_cart
     @deals = Deal.all
       # if params[:query].present?
       #   @products = Product.search_by_title_and_description("%#{params[:query]}%")
@@ -13,6 +13,7 @@ class DealsController < ApplicationController
 
   def new
     @deal = Deal.new
+
   end
 
   def create
