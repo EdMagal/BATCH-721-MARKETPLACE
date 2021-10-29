@@ -1,17 +1,32 @@
+<div class="container text-right">
+  <p>Categoria:<%= @product.category %></p>
+</div>
+<div class="container text-center">
+  <h1><%= @product.title %></h1>
+</div>
+  <div class="container mt-3 mb-2">
+    <% if @product.photos.attached? %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 400, width: 300, crop: :fill %>
+      <% end %>
+    <% else %>
+        <% last_word = @product.title.split.last %>
+        <div class="card"> <img src=<%= Faker::LoremFlickr.image(size: "400x300", search_terms: [last_word]) %>>
+    <% end %>
+  </div>
+  
+    <div class="container mt-4">
+    <div class="d-flex justify-content-around">
+      <p>Preço: R$<%= @product.price%></p>
+      <p>Estoque:<%= @product.stock%></p>
+    <%# </div> %>
+  </div>  
+  <div class="container text-center">
+      <p>Descrição:<%= @product.description%></p>    
+  </div>
 
-<h1><%= @product.title %></h1>
-  <p>Descrição:<%= @product.description%></p>
-  <p>Preço: R$<%= @product.price%></p>  
-  <p>Estoque:<%= @product.stock%></p>
-  <h2>Categoria:<%= @product.category %></h2>
-  <% if @product.photos.attached? %>
-  <% @product.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <% else %>
-   You should add a picture to your product!
-  <% end %>
+<div class="d-flex justify-content-around">
+  <p type="button" class="btn btn-outline-warning"><%= link_to 'Voltar', products_path %></p>
 
-  <p type="button" class="btn btn-link"><%= link_to 'Back to products', products_path %></p>
-
-  <p type="button" class="btn btn-link"><%= link_to 'comprar', new_product_deal_path(@product)%></p>
+  <p type="button" class="btn btn-outline-success"><%= link_to 'Comprar', new_product_deal_path(@product)%></p>
+</div>
