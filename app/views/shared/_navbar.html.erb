@@ -22,7 +22,7 @@
           <%= link_to "Home", products_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Carrinho", "#", class: "nav-link" %>
+          <%= link_to "Carrinho", "list_cart_path(current_user)", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= cl_image_tag current_user.profile_picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
