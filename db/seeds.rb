@@ -28,13 +28,16 @@ puts "10 users have been created."
 
 # Seeds the database with 30 Instances of the Product model using the Faker gem
 puts "Seeding products database..."
+
 30.times do
+  title = Faker::Commerce.product_name
   Product.create!(
-    title: Faker::Commerce.product_name,
+    title: title,
     price: rand(1..100),
     description: Faker::Lorem.paragraph,
     stock: rand(1..100),
     category: Faker::Commerce.department,
+    photo: Faker::LoremFlickr.image(size: "300x300", search_terms: [title.split.last]),
     user_id: User.all.sample.id
   )
 end
