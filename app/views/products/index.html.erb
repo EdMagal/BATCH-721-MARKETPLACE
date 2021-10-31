@@ -2,13 +2,7 @@
 <h1> Produtos </h1>
 <% if policy(Product).create? %>
 <%= link_to 'Incluir um produto', new_product_path, class: "btn-flat" %>
+<%= render 'product-cards' %>
+<p type="button" class="btn btn-link"><%= link_to 'Ofertas!', cheap_products_path %></p>
+=======
 <% end %>
-<!--
-<ul><% @products.each do |product| %>
-  <li><%= link_to product.title, product_path(product)%>
-  R$:<%= product.price%></li>
- <% end %>
- </ul>
- -->
- <%= render 'product-cards' %>
- <p type="button" class="btn btn-link"><%= link_to 'Ofertas!', cheap_products_path %></p>
