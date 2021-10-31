@@ -37,8 +37,10 @@ puts "Seeding products database..."
     description: Faker::Lorem.paragraph,
     stock: rand(1..100),
     category: Faker::Commerce.department,
+
     photo: Faker::LoremFlickr.image(size: "300x300", search_terms: [title.split.last]),
     user_id: User.all.sample.id
+
   )
 end
 puts "30 products have been successfully created."

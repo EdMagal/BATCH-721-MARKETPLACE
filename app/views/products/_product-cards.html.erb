@@ -5,8 +5,9 @@
         <div class="col">
           <div class="card h-100 shadow-sm"> <img src=<%= product.photo %> class="card-img-top" alt="...">
             <div class="card-body">
+
               <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary"><%= product.title %></span> R$ <span class="float-end price-hp"><%= product.price%></span> </div>
-              <h5 class="card-title"><%= product.description %></h5>
+              <h5 class="card-title"><%= product.description %></h5
               <div class="text-center my-4"><%= link_to "Ver oferta", product_path(product), class: 'btn btn-warning' %></div>
             </div>
           </div>
