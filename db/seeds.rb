@@ -30,13 +30,17 @@ puts "10 users have been created."
 puts "Seeding products database..."
 
 30.times do
+  title = Faker::Commerce.product_name
   Product.create!(
-    title: Faker::Commerce.product_name,
+    title: title,
     price: rand(1..100),
     description: Faker::Lorem.paragraph,
     stock: rand(1..100),
     category: Faker::Commerce.department,
-    user_id: User.all.sample.id,
+
+    photo: Faker::LoremFlickr.image(size: "300x300", search_terms: [title.split.last]),
+    user_id: User.all.sample.id
+
   )
 end
 puts "30 products have been successfully created."
