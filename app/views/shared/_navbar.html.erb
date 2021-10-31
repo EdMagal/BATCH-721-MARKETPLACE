@@ -1,11 +1,25 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to products_path, class: "navbar-brand" do %>
-    <%= image_tag ("logo2.png") %>
-  <% end %>
 
+<nav id="navbar" class="d-flex">
+  <div class="navbar w-100 navbar-expand-sm navbar-light navbar-marketplace">
+    <%= link_to "#", class: "navbar-brand navbar-collapse collapse" do %>
+      <%= image_tag ("logo2.png") %>
+    <% end %>
+  
+  <%= form_tag products_path, method: :get, :novalidate => "novalidate", :class => "simple_form search flex-grow-1" do %>
+    <div class="search-form-control form-group">
+      <%= text_field_tag :query, params[:query], class: "form-control string required", placeholder: "Find a product" %>
+      <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+        <i class="fa fa-search"> Search</i>
+      <% end %>
+    </div>
+
+
+  
+  <!-- Burguer Menu will replace the links when screen width is small enough -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <%= form_tag products_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
@@ -22,6 +36,7 @@
           <%= link_to "Home", products_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
+
           <%= link_to "Carrinho", list_cart_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
@@ -39,4 +54,5 @@
       <% end %>
     </ul>
   </div>
-</div>
+  </div>
+</nav>
