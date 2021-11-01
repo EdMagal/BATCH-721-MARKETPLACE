@@ -1,11 +1,21 @@
-<div class='container'>
+
+<div class='container bg-trasparent my-2 p-1'>
 <%= simple_form_for(@product) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :stock %>
-  <%= f.input :category %>
+  <%= f.input :title, required: true, placeholder: 'O que você pretende vender?'%>
+  <%= f.input :description, required: true, placeholder: 'Descreva seu produto aqui' %>
+  <%= f.input :price, required: true, placeholder: 'Qual o valor do seu produto?' %>
+  <%= f.input :stock, required: true, placeholder: 'Quantos vocês prentende vender?' %>
+  <%= f.input :category, required: true, placeholder: 'Lembre de colocar a categoria que pertence seu produto aqui!' %>
+  <label class="btn btn-outline-dark">
+  Add a Photos!
+  <span style="display:none;">
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  </span>
+</label> 
+   <%= content_tag(:div, class: 'form-group') do %>
+   <%= content_tag(:div, class: 'col-sm-offset-2') do %>
+    <%= f.button :submit, value: 'Save', class: "btn btn-outline-success" %>
+  <% end %>
+  <% end %>
 <% end %>
 </div>

@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   
   # GET /products/:cheap (collection)
   def cheap
-    @products = Product.where("price < 20")
+    @products = policy_scope(Product).where("price < 20")
   end
 
   # GET /products/:id
