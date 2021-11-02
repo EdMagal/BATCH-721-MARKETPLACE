@@ -1,0 +1,28 @@
+<% @user = User.find(params[:id])  %>
+<h2> <%= @user.first_name %> <%= @user.last_name %>, this is your Purchasing History </h2>
+
+<p>
+<p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
+</p>
+<br>
+
+<table>
+  <tr>
+    <td> Quantity </td>
+    <td> Product_id and Name</td>
+    <td> Purchased at</td>
+  </th>
+
+<% @deals.each do |deal| %>
+  <% if deal.finalizado %>
+    <tr>
+      <td align=center> <%= deal.quantity %> </td>
+      <% @product = Product.find(deal.product_id) %>
+      <td> <%= deal.product_id %> - <%= @product.title %> </td>
+      <td><%=deal.updated_at %> </td>
+    </tr>
+  <% end %>
+ <% end %>
+</table>
+<br>
+<p type="button" class="btn btn-link"><%= link_to 'Selecionar Produtos!', products_path %></p>

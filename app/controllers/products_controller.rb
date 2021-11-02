@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_product, only: [:show, :destroy]
-  
+  before_action :set_product, only: [:show, :destroy, :update]
+
 
   # GET /products
   def index
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
         @products = policy_scope(Product)
       end
   end
-  
+
   # GET /products/:cheap (collection)
   def cheap
     @products = policy_scope(Product).where("price < 20")
@@ -34,11 +34,18 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
-     
+
       redirect_to products_path, notice: 'Product was successfully created.'
     else
       render :new
     end
+  end
+
+  # PUT / products:id/update
+  def update
+    authorize @product
+    product.stock = product.stock - deal.quantity
+    @product.update
   end
 
   # DELETE /products/:id/delete
