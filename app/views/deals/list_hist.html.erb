@@ -16,7 +16,7 @@
 <% @deals.each do |deal| %>
   <% if deal.finalizado %>
     <tr>
-      <td align=center> <%= deal.quantity %> </td>
+      <td classs= "align-center"> <%= deal.quantity %> </td>
       <% @product = Product.find(deal.product_id) %>
       <td> <%= deal.product_id %> - <%= @product.title %> </td>
       <td><%=deal.updated_at %> </td>
