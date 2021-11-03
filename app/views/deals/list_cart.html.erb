@@ -1,5 +1,6 @@
-<% @user = User.find(params[:id])  %>
+<% @user = User.find(params[:id]) %>
 <h2> <%= @user.first_name %> <%= @user.last_name %>Carrinho</h2>
+
 
 <p>
 <p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
@@ -29,5 +30,4 @@
  <% end %>
 </table>
   <br>
-
   <p type="button" class="btn btn-link"><%= link_to 'Confirmar Compra!', list_finish_path(current_user) %></p>
