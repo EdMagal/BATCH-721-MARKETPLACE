@@ -44,3 +44,4 @@ puts "Seeding products database..."
   )
 end
 puts "30 products have been successfully created."
+# testing for push

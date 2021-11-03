@@ -1,5 +1,5 @@
 <% @user = User.find(params[:id])  %>
-<h2> <%= @user.first_name %> <%= @user.last_name %>, Deals </h2>
+<h2> <%= @user.first_name %> <%= @user.last_name %>, Deals. </h2>
 
 <p>
 <p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
@@ -9,7 +9,7 @@
 <table>
   <tr>
     <td> Quantity </td>
-    <td> Product_id and Name</td>
+    <td> Product id and Name</td>
     <td> Price R$ &nbsp;&nbsp;</td>
     <td> Item Value R$ </td>
     <td> &nbsp;&nbsp; Excluir? </td>
