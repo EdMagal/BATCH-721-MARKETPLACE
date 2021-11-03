@@ -1,19 +1,24 @@
+<div class='container bg-trasparent my-2 p-1'>
+<nav class="navbar navbar-light bg-light">
 <% @user = User.find(params[:id])  %>
 
-<h2>Hello,    <%= @user.first_name %> <%= @user.last_name %>, Finishing your purchase. </h2>
+<h2>Hello!<%= @user.first_name %> <%= @user.last_name %>your purchase:</h2>
 
 <p>
 <p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
 </p>
+</nav>
 <br>
 
-<table>
+<table class="table">
+<thead>
   <tr>
-    <td> Quantity </td>
-    <td> Product id and Name</td>
-    <td> Price R$ &nbsp;&nbsp;</td>
-    <td> Item Value R$ </td>
+    <th scope="col"> Quantity </th>
+    <th scope="col"> id and Name</th>
+    <th scope="col">Price R$ &nbsp;&nbsp;</th>
+    <th scope="col"> Item Value R$ </th>
   </tr>
+</thead>
 <% total = 0 %>
 <% @deals.each do |deal| %>
   <% unless deal.finalizado %>
@@ -34,4 +39,5 @@
 </table>
 <br>
 <p>Your purchase total value is R$ <%= total %></p>
-<p type="button" class="btn btn-link"><%= link_to 'Confirmar Compra!', products_path %></p>
+<p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Confirmar Compra!', products_path %></p>
+</div>

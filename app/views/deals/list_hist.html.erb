@@ -1,28 +1,35 @@
+<div class='container bg-trasparent my-2 p-1'>
+<nav class="navbar navbar-light bg-light">
 <% @user = User.find(params[:id])  %>
-<h2> <%= @user.first_name %> <%= @user.last_name %>, this is your Purchasing History </h2>
+<h2 class="navbar-brand mb-0 h1"> <%= @user.first_name %> <%= @user.last_name %>Histórico de compras </h2>
 
 <p>
-<p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
+<p>User id: <%= @user.id%>, Address:<%= @user.address %>.</p>
 </p>
+</nav>
 <br>
 
-<table>
+<table class="table table-bordered">
+<thead class="table-dark table-sm">
   <tr>
-    <td> Quantity </td>
-    <td> Product id and Name</td>
-    <td> Purchased at</td>
+    <th scope="col"> Quantity </th>
+    <th scope="col"> Id and Name</th>
+    <th scope="col"> Purchased at</th>
   </tr>
-
+</thead>
+ <tbody>
 <% @deals.each do |deal| %>
   <% if deal.finalizado %>
     <tr>
-      <td classs= "align-center"> <%= deal.quantity %> </td>
+      <th scope="row"> <%= deal.quantity %> </th>
       <% @product = Product.find(deal.product_id) %>
-      <td> <%= deal.product_id %> - <%= @product.title %> </td>
-      <td><%=deal.updated_at %> </td>
+      <th scope="row"> <%= deal.product_id %> - <%= @product.title %> </th>
+      <th scope="row"><%=deal.updated_at %> </th>
     </tr>
   <% end %>
  <% end %>
+ </tbody>
 </table>
 <br>
-<p type="button" class="btn btn-link"><%= link_to 'Selecionar Produtos!', products_path %></p>
+<p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Continuar comprando!', products_path %></p>
+</div>
