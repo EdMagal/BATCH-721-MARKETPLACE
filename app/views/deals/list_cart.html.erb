@@ -1,12 +1,17 @@
+
+<div class='container bg-trasparent my-2 p-1'>
+<nav class="navbar navbar-light bg-light">
 <% @user = User.find(params[:id])  %>
 <h2> <%= @user.first_name %> <%= @user.last_name %>Carrinho</h2>
 
 <p>
-<p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
+<p>User id:<%= @user.id%>, Address:<%= @user.address %>.</p>
 </p>
+</nav>
 <br>
 
-<table>
+<table class="table table-bordered">
+<thead class="table-dark table-sm">
   <tr>
     <td> Quantity </td>
     <td> Product id and Name</td>
@@ -14,20 +19,23 @@
     <td> Item Value R$ </td>
     <td> &nbsp;&nbsp; Excluir? </td>
   </tr>
-
+</thead>
+<tbody>
 <% @deals.each do |deal| %>
   <% unless deal.finalizado %>
     <tr>
-      <td class= "align-center"> <%= deal.quantity %> </td>
+      <th scope="row">  <%= deal.quantity %> </th>
       <% @product = Product.find(deal.product_id) %>
-      <td> <%= deal.product_id %> - <%= @product.title %> </td>
-      <td class= "align-center"> <%= deal.price %> </td>
-      <td class= "align-center"> <%= deal.quantity * @product.price %> </td>
-      <td class= "align-center" type="button" class="btn btn-link"><%= link_to "Excluir!", deal, method: "DELETE" %></td>
+      <th scope="row">  <%= deal.product_id %> - <%= @product.title %> </th>
+      <th scope="row">  <%= deal.price %> </th>
+      <th scope="row">  <%= deal.quantity * @product.price %> </th>
+      <th scope="row" type="button" class="btn btn-link"><%= link_to "Excluir!", deal, method: "DELETE" %></th>
     </tr>
   <% end %>
  <% end %>
+ </tbody>
 </table>
   <br>
 
-  <p type="button" class="btn btn-link"><%= link_to 'Confirmar Compra!', list_finish_path(current_user) %></p>
+  <p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Confirmar Compra!', list_finish_path(current_user) %></p>
+</div>

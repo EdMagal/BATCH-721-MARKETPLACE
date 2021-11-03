@@ -7,13 +7,15 @@
 </p>
 <br>
 
-<table>
+<table class="table">
+<thead>
   <tr>
-    <td> Quantity </td>
-    <td> Product id and Name</td>
-    <td> Price R$ &nbsp;&nbsp;</td>
-    <td> Item Value R$ </td>
+    <th scope="col"> Quantity </th>
+    <th scope="col"> id and Name</th>
+    <th scope="col">Price R$ &nbsp;&nbsp;</th>
+    <th scope="col"> Item Value R$ </th>
   </tr>
+</thead>
 <% total = 0 %>
 <% @deals.each do |deal| %>
   <% unless deal.finalizado %>
