@@ -1,6 +1,6 @@
 
 <% if policy(Product).create? %>
-<div class="d-grid gap-2 d-md-flex justify-content-between">
+<div class="d-grid gap-2 mt-3 d-md-flex justify-content-around">
 <%= link_to 'Ofertas!', cheap_products_path, class: "btn btn-outline-danger" %>
 <%= link_to 'Colocar produto para vender', new_product_path, class: "btn btn-outline-success" %>
 </div>
