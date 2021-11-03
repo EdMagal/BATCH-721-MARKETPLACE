@@ -1,0 +1,25 @@
+#product-frame {
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid darkgrey;
+  width: 770px;
+}
+
+
+@media only screen and (max-width: 880px) {
+  #product-frame {
+    width:500px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #product-frame {
+    width:300px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  #product-frame {
+    width:100%;
+  }
+}
