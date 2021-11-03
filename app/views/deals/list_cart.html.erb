@@ -1,5 +1,6 @@
 <% @user = User.find(params[:id]) %>
-<h2> <%= @user.first_name %> <%= @user.last_name %>, Deals. </h2>
+<h2> <%= @user.first_name %> <%= @user.last_name %>Carrinho</h2>
+
 
 <p>
 <p>User id and Address: <%= @user.id%>, <%= @user.address %></p>
@@ -18,12 +19,12 @@
 <% @deals.each do |deal| %>
   <% unless deal.finalizado %>
     <tr>
-      <td align=center> <%= deal.quantity %> </td>
+      <td class= "align-center"> <%= deal.quantity %> </td>
       <% @product = Product.find(deal.product_id) %>
       <td> <%= deal.product_id %> - <%= @product.title %> </td>
-      <td align=center> <%= deal.price %> </td>
-      <td align=center> <%= deal.quantity *  deal.price %> </td>
-      <td align=center><type="button" class="btn btn-link"><%= link_to "Excluir!", deal, method: "DELETE" %></td>
+      <td class= "align-center"> <%= deal.price %> </td>
+      <td class= "align-center"> <%= deal.quantity * @product.price %> </td>
+      <td class= "align-center" type="button" class="btn btn-link"><%= link_to "Excluir!", deal, method: "DELETE" %></td>
     </tr>
   <% end %>
  <% end %>

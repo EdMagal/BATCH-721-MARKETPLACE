@@ -18,14 +18,14 @@
 <% @deals.each do |deal| %>
   <% unless deal.finalizado %>
     <tr>
-      <td align=center> <%= deal.quantity %> </td>
+      <td class= "align-center"> <%= deal.quantity %> </td>
       <% @product = Product.find(deal.product_id) %>
       <td> <%= deal.product_id %> - <%= @product.title %> </td>
       <% @product.stock = @product.stock - deal.quantity %>
       <% @product.save %>
-      <td align=center> <%= deal.price %> </td>
-      <td align=center> <%= deal.quantity *  deal.price %> </td>
-      <% total = total + (deal.quantity *  deal.price) %>
+      <td class= "align-center"> <%= deal.price %> </td>
+      <td class= "align-center"> <%= deal.quantity *  @product.price %> </td>
+      <% total = total + (deal.quantity *  @product.price) %>
     </tr>
     <% deal.finalizado = true %>
     <% deal.save%>

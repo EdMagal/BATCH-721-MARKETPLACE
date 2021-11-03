@@ -3,10 +3,26 @@
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
       <% @products.each do |product| %>
         <div class="col">
-          <div class="card h-100 shadow-sm"> <img src=<%= product.photo %> class="card-img-top" alt="...">
+          <div class="card h-100 shadow-sm"> 
+            
+            <!-- Displays the product image if it has an attached image file, otherwise gets a random image -->
+            <% if product.photos.attached? %>
+              <% product.photos.each do |photo| %>
+                <%= cl_image_tag(photo.key, :class=>"card-img-top", :crop => :fill) %>
+              <% end %>
+            <% else %>
+              <% last_word = product.title.split.last %>
+              <img src=<%= Faker::LoremFlickr.image(size: "400x300", search_terms: [last_word])%> class="card-img-top">
+            <% end %>
+            <!-- <img src=<%= product.photo %> class="card-img-top" alt="..."> -->
             <div class="card-body">
+              <!-- Product name and price -->
               <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary"><%= product.title %></span> R$ <span class="float-end price-hp"><%= product.price%></span> </div>
+              
+              <!-- Product description -->
               <h5 class="card-title"><%= product.description %></h5>
+
+              <!-- Purchase button -->
               <div class="text-center my-4"><%= link_to "Ver oferta", product_path(product), class: 'btn btn-product btn-warning' %></div>
             </div>
           </div>
