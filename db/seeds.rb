@@ -40,8 +40,6 @@ puts "Seeding products database..."
 
     photo: Faker::LoremFlickr.image(size: "300x300", search_terms: [title.split.last]),
     user_id: User.all.sample.id
-
   )
 end
 puts "30 products have been successfully created."
-# testing for push

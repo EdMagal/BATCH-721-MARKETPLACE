@@ -4,6 +4,7 @@
 <% @user = User.find(params[:id])  %>
 <h2> <%= @user.first_name %> <%= @user.last_name %>Carrinho</h2>
 
+
 <p>
 <p>User id:<%= @user.id%>, Address:<%= @user.address %>.</p>
 </p>
@@ -36,6 +37,6 @@
  </tbody>
 </table>
   <br>
-
   <p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Confirmar Compra!', list_finish_path(current_user) %></p>
 </div>
+
