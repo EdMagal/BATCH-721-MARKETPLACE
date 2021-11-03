@@ -1,37 +1,40 @@
-<div class="container text-right">
-  <p class="font-italic">Categoria:<%= @product.category %></p>
-</div>
-
-<div class="container text-center">
-  <h1 class="font-weight-bold"><%= @product.title %></h1>
-</div>
-
-<div class="container mt-3 mb-2">
-  <% if @product.photos.attached? %>
-    <% @product.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 400, width: 300 %>
-    <% end %>
-  <% else %>
-      <% last_word = @product.title.split.last %>
-      <div class="card border-dark"> <img src=<%= Faker::LoremFlickr.image(size: "400x300", search_terms: [last_word]) %>>
-  <% end %>
-</div>
+<div id="product-frame">
+  <div class="container text-right">
+    <p class="font-italic">Categoria:<%= @product.category %></p>
+  </div>
   
-<div class="container mt-4">
+  <div class="container text-center">
+    <h1 class="font-weight-bold"><%= @product.title %></h1>
+  </div>
+  
+  
+  <div class="container mt-3 mb-2">
+    <% if @product.photos.attached? %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 400, width: 300 %>
+      <% end %>
+    <% else %>
+        <% last_word = @product.title.split.last %>
+        <div class="card border-dark"> <img src=<%= Faker::LoremFlickr.image(size: "400x300", search_terms: [last_word]) %>>
+    <% end %>
+  </div>
+  
+  <div class="container mt-4">
+    <div class="d-flex justify-content-around">
+      <p class="font-weight-bold">Preço: R$<%= @product.price%></p>
+      <p class="font-weight-bold">Estoque:<%= @product.stock%></p>
+    </div>
+  </div>
+  
+  <div class="container text-center">
+    <p>Descrição:<%= @product.description%></p>
+  </div>
+  
   <div class="d-flex justify-content-around">
-    <p class="font-weight-bold">Preço: R$<%= @product.price%></p>
-    <p class="font-weight-bold">Estoque:<%= @product.stock%></p>
-  </div>  
-</div>
-
-<div class="container text-center">
-  <p>Descrição:<%= @product.description%></p>    
-</div>
-
-<div class="d-flex justify-content-around">
-  <p type="button" class="btn btn-outline-warning rounded-pill"><%= link_to 'Voltar', products_path %></p>
-  <% if policy(Deal).create? %>
-  <p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Comprar', new_product_deal_path(@product)%></p>
-  <% end %>
+    <p type="button" class="btn btn-outline-warning rounded-pill"><%= link_to 'Voltar', products_path %></p>
+    <% if policy(Deal).create? %>
+    <p type="button" class="btn btn-outline-success rounded-pill"><%= link_to 'Comprar', new_product_deal_path(@product)%></p>
+    <% end %>
+  </div>
 </div>
 
