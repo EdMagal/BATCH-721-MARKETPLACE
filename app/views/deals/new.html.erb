@@ -1,7 +1,16 @@
-<h1><%= @product.title %></h1>
-<p><%= @product.price %></p>
-
-<%= simple_form_for [@product, @deal] do |f| %>
-  <%= f.input :quantity %>
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<div class='container bg-trasparent my-2 p-1'>
+<div class="card border-light mb-3" style="max-width: 36rem;">
+<h1 class="card-header"><%= @product.title %></h1>
+<p class="card-body text-dark"> R$:<%= @product.price %></p>
+<div class="card-text col-md-8">
+ <%= simple_form_for [@product, @deal] do |f| %>
+ <p class="card-text"> <%= f.input :quantity, as: :integer %></p>
+ <%= content_tag(:div, class: 'form-group') do %>
+ <%= content_tag(:div, class: 'col-sm-offset-2') do %>
+         <%= f.submit class: 'btn btn-primary' %>
+ <% end %> 
+ <% end %> 
+<% end %> 
+</div>
+</div>
+</div>
